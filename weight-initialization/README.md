@@ -72,19 +72,9 @@ Here, the weight values are chosen from the uniform distribution <span style="co
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ## REFERENCES
 1. https://wandb.ai/sauravmaheshkar/initialization/reports/A-Gentle-Introduction-To-Weight-Initialization-for-Neural-Networks--Vmlldzo2ODExMTg
 2. https://www.kdnuggets.com/2018/06/deep-learning-best-practices-weight-initialization.html
 3. https://www.pinecone.io/learn/weight-initialization/#early-approaches-to-weight-initialization
 4. K. Kumar, On weight initialization in deep neural networks (2017) - https://arxiv.org/abs/1704.08863
+5. https://mmuratarat.github.io/2019-02-25/xavier-glorot-he-weight-init
