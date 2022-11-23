@@ -14,11 +14,16 @@ During forward propagation:
     z = wx + b 
     if w = 0, => z = 0
 
-    During forward propagation, the activations are same. So during back propagation, the gradients will also be the same.  The weights are initially zero and will obtain the same update at each step. The neurons evlove symmetrically and it is almost similar to a Linear network. This leads to the "SYMMETRY PROBLEM"
+During forward propagation, the activations are same. So during back propagation, the gradients will also be the same.  The weights are initially zero and will obtain the same update at each step. The neurons evlove symmetrically and it is almost similar to a Linear network. This leads to the "SYMMETRY PROBLEM"
 
-    ### But why is this a problem? 
-    If the weight flowing into the Neurons are equal, all the neurons will learn the same thing. This is not a desired behaviour as neural networks are meant to learn different features to map complex inputs and outputs. 
+### But why is this a problem? 
+If the weight flowing into the Neurons are equal, all the neurons will learn the same thing. This is not a desired behaviour as neural networks are meant to learn different features to map complex inputs and outputs.
+The same applies to the case when the weights are initialized with some constant k 
 
+## Random Initialization
+Considering that weights are drawn from a standard distribution with 0 mean and unit variance, all the weights drawn are scaled by 0.01. For smaller values of weights, the activation values keep decreasing as we go deeper into the network. During backpropagation, the computed gradients are propotional to the respective activation values. For lesser activation values, the gradients are lesser, thus the update is also negligible and the neurons do not learn. This problem is known as the Vanishing gradients. 
+
+### Note: This is applicable only for Sigmoid and tanh activation functions. For relu activation, However, the gradient is equal to 0 for negative input and 1 for positive input.  
 
 
 
