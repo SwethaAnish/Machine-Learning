@@ -21,9 +21,33 @@ If the weight flowing into the Neurons are equal, all the neurons will learn the
 The same applies to the case when the weights are initialized with some constant k 
 
 ## Random Initialization
-Considering that weights are drawn from a standard distribution with 0 mean and unit variance, all the weights drawn are scaled by 0.01. For smaller values of weights, the activation values keep decreasing as we go deeper into the network. During backpropagation, the computed gradients are propotional to the respective activation values. For lesser activation values, the gradients are lesser, thus the update is also negligible and the neurons do not learn. This problem is known as the Vanishing gradients. 
 
-### Note: This is applicable only for Sigmoid and tanh activation functions. For relu activation, However, the gradient is equal to 0 for negative input and 1 for positive input.  
+#### Initializing weights to small values: 
+
+Considering that weights are drawn from a standard distribution with 0 mean and unit variance, all the weights drawn are scaled by 0.01. For smaller values of weights, the activation values keep decreasing as we go deeper into the network. During backpropagation, the computed gradients are propotional to the respective activation values. For lesser activation values, the gradients are lesser, thus the update is also negligible and the neurons do not learn. This problem is known as the VANISHING GRADIENTS. 
+ 
+
+#### Initializing weights to large values:
+
+Consider the weights are drawn from a standard distribution with large random values. If the activation function used is tanh or sigmoid, the activation values would come around the saturation region for larger weights. During backpropagation, the gradient of these activation values would close to zero. Thus the weight update is Negligible and Neurons do not learn. 
+
+For some values, which are large enough but would not fall under the saturation region when an activation function is applied, the activation values would be large. In the cases, the corresponding gradient would also be large enough resulting to a larger update of weight. This can change the loss value drastically at each step resulting in oscillations. This may cause the optimizer to oscillate around the minima and might not reach the minima. This problem of larger update is known as EXPLODING GRADIENTS. This can sometimes introduce NaNs to the weights and the loss function. 
+
+#####  Note: The Vanishing and Exploding gradients is applicable only for Sigmoid and tanh activation functions. For relu activation, However, the gradient is equal to 0 for negative input and 1 for positive input. 
+
+
+## Best Practices:
+1. Use Relu/ Leaky Relu as activation function as it is unaffected by the vanishing and exploding gradient problem.
+2. Use a heurisitc to initialize weights depending on the non - linear activation function used. The weights are drawn from a normal distribution with variance k/n. (k depends on the choice of activation function)
+weights are drawn from a standard normal distribution an scaled by a factor sqrt(k/n).[Refer reference 1 to understand more about how the scaling factor is chosen]
+
+fan_in = Number of Inputs that flow into a neuron and fan_out = Number of outputs that flow out of the neuron
+
+## Xavier or glorot Initialization:
+
+According to Xavier initialization, the variance of the weights chosen is equal to:
+
+image.png
 
 
 
