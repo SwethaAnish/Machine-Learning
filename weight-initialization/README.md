@@ -55,7 +55,7 @@ If the values are sampled from a uniform distributon [-r, r], the the variance i
 if <span style="color:red">r<sup>2</sup>/ 3 = 2/ fan_in + fan_out</span>, 
 then, <span style="color:red">r = $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$</span>   
 
-So the weight values are chosen from the uniform distribution <span style="color:red">[-$\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$, $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$]</span>
+So the weight values are chosen from the uniform distribution <span style="color:red">[- $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$, $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$]</span>
 
 
 ## He initialization:
