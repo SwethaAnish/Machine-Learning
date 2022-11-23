@@ -66,7 +66,7 @@ To overcome this issue, a factor of 2 is muliplied to the variance considered in
 
 <span style="color:red">Var(w) = 4 / fan_in</span>
 
-Here, the weight values are chosen from the uniform distribution <span style="color:red">[$\sqrt{2}$ * $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$, $\sqrt{2}$ * $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$]</span>.
+Here, the weight values are chosen from the uniform distribution <span style="color:red">[ $\sqrt{2}$ * $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$, $\sqrt{2}$ * $\sqrt{6}$/ $\sqrt{(fan_in + fan_out)}$]</span>.
 
 
 
