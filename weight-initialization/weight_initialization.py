@@ -6,7 +6,7 @@ class weight_init:
     def __init__(self, func):
         self.input = np.random.randn(1,4)
         self.activation_dict = {'tanh':lambda x:np.tanh(x),'sigmoid':lambda x:1/(1+np.exp(-x)), 'relu': lambda x : np.maximum(0, x) }
-        self.hidden_layer = [10] * 5 # [5 hidden layers with 10 neurons each]
+        self.hidden_layer = [500] * 5 # [5 hidden layers with 10 neurons each]
         self.H_matrix = {}
         self.func = func
         self.comp_values(self.func)
@@ -32,15 +32,23 @@ class weight_init:
         self.weight = np.zeros((self.fan_in, self.fan_out), dtype=int)
         self.activation = 'tanh'
         return {'weight': self.weight, 'activation':self.activation}
-    def someValue_k(self):
-        pass
-    def random_small(self):
-        pass
-    def random_large(self):
-        pass
+    def someValue_k(self, fan_in, fan_out):
+        self.weight = np.full((self.fan_in, self.fan_out), 1, dtype=int)
+        self.activation = 'sigmoid'
+        return {'weight': self.weight, 'activation':self.activation}
+    def random_small(self, fan_in, fan_out):
+        self.weight = np.random.randn(self.fan_in, self.fan_out) * 0.01
+        self.activation = 'sigmoid'
+        # self.activation = 'tanh'
+        return {'weight': self.weight, 'activation':self.activation}
+    def random_large(self, fan_in, fan_out):
+        self.weight = np.random.randn(self.fan_in, self.fan_out)
+        self.activation = 'sigmoid'
+        # self.activation = 'tanh'
+        return {'weight': self.weight, 'activation':self.activation}
     def xavier(self):
         pass
     def he_(self):
         pass
 
-weight_init("zero")
+weight_init("random_large")
