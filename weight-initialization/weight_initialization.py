@@ -6,7 +6,7 @@ class weight_init:
     def __init__(self, func):
         self.input = np.random.randn(1,4)
         self.activation_dict = {'tanh':lambda x:np.tanh(x),'sigmoid':lambda x:1/(1+np.exp(-x)), 'relu': lambda x : np.maximum(0, x) }
-        self.hidden_layer = [500] * 5 # [5 hidden layers with 10 neurons each]
+        self.hidden_layer = [1500] * 5 # [5 hidden layers with 10 neurons each]
         self.H_matrix = {}
         self.func = func
         self.comp_values(self.func)
@@ -38,17 +38,20 @@ class weight_init:
         return {'weight': self.weight, 'activation':self.activation}
     def random_small(self, fan_in, fan_out):
         self.weight = np.random.randn(self.fan_in, self.fan_out) * 0.01
-        self.activation = 'sigmoid'
-        # self.activation = 'tanh'
+        self.activation = 'tanh'
         return {'weight': self.weight, 'activation':self.activation}
     def random_large(self, fan_in, fan_out):
         self.weight = np.random.randn(self.fan_in, self.fan_out)
         self.activation = 'sigmoid'
         # self.activation = 'tanh'
         return {'weight': self.weight, 'activation':self.activation}
-    def xavier(self):
-        pass
-    def he_(self):
-        pass
+    def xavier(self, fan_in, fan_out):
+        self.weight = np.random.uniform(-(np.sqrt(6)/np.sqrt(self.fan_in + self.fan_out)), (np.sqrt(6)/np.sqrt(self.fan_in + self.fan_out)), size=(self.fan_in,self.fan_out))
+        self.activation = 'relu'
+        return {'weight': self.weight, 'activation':self.activation}
+    def he_(self, fan_in, fan_out):
+        self.weight = np.random.uniform(-(np.sqrt(2) * np.sqrt(6)/np.sqrt(self.fan_in + self.fan_out)), (np.sqrt(2) * np.sqrt(6)/np.sqrt(self.fan_in + self.fan_out)), size=(self.fan_in,self.fan_out))
+        self.activation = 'sigmoid'
+        return {'weight': self.weight, 'activation':self.activation}
 
-weight_init("random_large")
+weight_init("random_small")
