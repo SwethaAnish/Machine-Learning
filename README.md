@@ -1,3 +1,3 @@
 # Machine-Learning
-This repository contains baisc concepts used in Machine learning and some basic machine learning Algorithms. 
+This repository contains information about the basic concepts and algorithms used in Machine learning 
 
